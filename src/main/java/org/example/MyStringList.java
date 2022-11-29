@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.exceptions.ElementNotFoundException;
 import org.example.exceptions.InvalidIndexException;
 import org.example.exceptions.NullItemException;
 
@@ -58,7 +57,6 @@ public class MyStringList implements StringList {
         int index = indexOf(item);
         return remove(index);
     }
-
     @Override
     public String remove(int index) {
         validateIndex(index);
