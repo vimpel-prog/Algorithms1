@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class IntegerList {
     int size;
-    private final Integer[] array;
+    private Integer[] array;
     public IntegerList() {
         array = new Integer[10];
     }
@@ -17,15 +17,16 @@ public class IntegerList {
     }
 
     public Integer add(Integer item) {
-        validateSize();
-        validateItem(item);
-        array[size++] = item;
-        return item;
+
+        return add(size,item);
     }
 
     public Integer add(int index, Integer item) {
         validateItem(item);
         validateIndex(index);
+        if(size>array.length-1){
+            grow();
+        }
         if (index == size) {
             array[size++] = item;
             return item;
@@ -143,9 +144,13 @@ public class IntegerList {
     }
 
     private void validateIndex(int index) {
-        if (index < 0 || index >= size) {
+        if (index < 0 || index > size) {
             throw new InvalidIndexException("Некорректный индекс");
         }
+    }
+    private void grow(){
+        int newLength = array.length+ array.length/2;
+        array=Arrays.copyOf(array,newLength);
     }
 
     @Override

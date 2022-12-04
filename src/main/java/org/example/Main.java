@@ -4,15 +4,16 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.println("Hello world!");
-//        MyStringList list = new MyStringList(10);
-//        list.add("name1");
-//        list.add("name2");
-//        list.add(2,"name3");
-//        list.add(2,"name4");
-//        list.add(0,"nameBig");
-//
-//        System.out.println(list);
+        System.out.println("Hello world!");
+        MyStringList listStr = new MyStringList(10);
+        listStr.add("name1");
+        listStr.add("name2");
+        listStr.add(1,"name3");
+        listStr.add(2,"name4");
+        listStr.add(0,"nameBig");
+
+        System.out.println(listStr);
+
 
         Integer[] arr1 = ArrayService.createRandomIntegerArray(1000);
         Integer[] arr2 = Arrays.copyOf(arr1,arr1.length);
@@ -34,23 +35,23 @@ public class Main {
 
 //        System.out.println(Arrays.toString(arr3));
 
-        IntegerList list = new IntegerList(500);
+        IntegerList list = new IntegerList(10000);
         list.add(4);
         list.add(2);
         list.add(6);
         list.add(1);
-        for(int i = 0 ; i<496; i++) {
+        for(int i = 0 ; i<9996; i++) {
             list.add(5);
         }
-        list.set(250, 250);
+        list.set(5000, 250);
 
         long start4 = System.currentTimeMillis();
         int a = list.indexOf(250);
-        System.out.println("find by insert = "+(System.currentTimeMillis()-start4));
+        System.out.println("find by binary O(logN) + sort = "+(System.currentTimeMillis()-start4));
 
         long start5 = System.currentTimeMillis();
         int b = list.lastIndexOf(250);
-        System.out.println("find by binary = "+(System.currentTimeMillis()-start5));
+        System.out.println("find by O(n) = "+(System.currentTimeMillis()-start5));
 
 
 
